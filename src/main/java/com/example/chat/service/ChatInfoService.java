@@ -13,7 +13,7 @@ import java.util.List;
 @Slf4j
 public class ChatInfoService {
     @Autowired
-    ChatInfoRepository chatInfoRepository;
+    private ChatInfoRepository chatInfoRepository;
 
     public List<ChatDto> getChatList(){
         List<ChatInfo> list = chatInfoRepository.findChatInfosByChatEnable("Y");

@@ -1,17 +1,27 @@
 package com.example.chat.service;
 
 import com.example.chat.dto.LoginRequestDto;
+import com.example.chat.entity.Customer;
 import com.example.chat.repo.CustomerRepository;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
-    public Integer login(LoginRequestDto dto){
-        Long result = customerRepository.countCustomersByLoginIdAndAndCustPwd(dto.getUserId(),dto.getPassword());
-        return Integer.parseInt(result.toString());
+    public Boolean login(LoginRequestDto dto, HttpSession session){
+        Customer result = customerRepository.findCustomerByLoginIdAndAndCustPwd(dto.getUserId(),dto.getPassword());
+        if(result != null){
+            session.setMaxInactiveInterval(1800);
+            session.setAttribute("custIdx",result.getCustIdx());
+            session.setAttribute("loginId",result.getLoginId());
+            session.setAttribute("custNm",result.getCustNm());
+        }
+        return result != null;
     }
 }

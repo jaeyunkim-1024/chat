@@ -11,8 +11,6 @@ import lombok.Setter;
 public class ChatDto {
     private Long chatNo;
     private String title;
-
-
     public static ChatDto fromEntity(ChatInfo entity){
         return ChatDto.builder()
                 .chatNo(entity.getChatNo())

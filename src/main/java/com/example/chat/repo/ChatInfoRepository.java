@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ChatInfoRepository extends JpaRepository <ChatInfo,Long> {
     List<ChatInfo> findChatInfosByChatEnable(String chatEnable);
+
+    ChatInfo findChatInfoByChatNoAndChatEnable(Long chatNo, String chatEnable);
 }

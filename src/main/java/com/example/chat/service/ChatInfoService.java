@@ -42,4 +42,13 @@ public class ChatInfoService {
             chatUserListRepository.save(newChatUserList);
         }
     }
+
+    public ChatDto create(ChatDto dto,Long custIdx){
+        ChatInfo entity = ChatInfo.toEntity(dto,custIdx);
+        ChatInfo result = chatInfoRepository.save(entity);
+        ChatUserList chatUserList = new ChatUserList(null,result.getChatNo(),custIdx.toString());
+        chatUserListRepository.save(chatUserList);
+
+        return ChatDto.fromEntity(result);
+    }
 }

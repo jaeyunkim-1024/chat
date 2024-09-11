@@ -30,6 +30,15 @@ public class ChatController {
                 .ok(result);
     }
 
+    @PostMapping("/create")
+    public ResponseEntity<ChatDto> create(HttpServletRequest req, ChatDto dto){
+        HttpSession session = req.getSession();
+        String custIdxStr = session.getAttribute("custIdx").toString();
+        ChatDto result = chatInfoService.create(dto,Long.parseLong(custIdxStr));
+        return ResponseEntity
+                .ok(result);
+    }
+
     @PostMapping("/join/{chatNo}")
     public ResponseEntity<Object> join(HttpServletRequest req, @PathVariable Long chatNo){
         try{
@@ -41,6 +50,8 @@ public class ChatController {
             /// 채팅방 번호 담음
             /// 혹은, 채팅방에 접근할 수 있는지 없는지 등등
             HttpHeaders headers = new HttpHeaders();
+            headers.set("joinChatNo",chatNo.toString());
+            headers.set("isForbidden","N");
 
             return ResponseEntity
                     .ok()

@@ -13,6 +13,6 @@ public class MessageDto {
     private String message;
 
     public String toString(){
-        return "MessageDto{custIdx:" + custIdx + ", choatNo:" + chatNo + ", message:" + message + "}";
+        return "MessageDto{custIdx:" + custIdx + ", chatNo:" + chatNo + ", message:" + message + "}";
     }
 }

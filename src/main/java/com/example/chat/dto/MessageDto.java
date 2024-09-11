@@ -11,4 +11,8 @@ public class MessageDto {
     private Long custIdx;
     private Long chatNo;
     private String message;
+
+    public String toString(){
+        return "MessageDto{custIdx:" + custIdx + ", choatNo:" + chatNo + ", message:" + message + "}";
+    }
 }

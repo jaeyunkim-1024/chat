@@ -22,6 +22,9 @@ public class ChatUserList {
     private Long chatNo;
 
     @Column(name = "CUST_IDX")
-    private String custIdxList;
+    private Long custIdx;
+
+    @Column(name = "JOIN_AT")
+    private Timestamp joinAt;
 
 }

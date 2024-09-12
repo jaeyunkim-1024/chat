@@ -69,12 +69,18 @@ public class ChatController {
     public ResponseEntity<String> exit(HttpServletRequest req, @PathVariable Long chatNo){
         HttpSession session = req.getSession();
         String custIdxStr = session.getAttribute("custIdx").toString();
-        chatInfoService.join(chatNo,Long.parseLong(custIdxStr));
-
+        chatInfoService.exit(chatNo,Long.parseLong(custIdxStr));
 
         return ResponseEntity
                 .ok()
                 .body("join");
+    }
+
+    @GetMapping("/message/{chatNo}")
+    public ResponseEntity<MessageDto> messageList(@PathVariable Long chatNo){
+        return ResponseEntity
+                .ok()
+                .body(null);
     }
 
 }

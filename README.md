@@ -1,5 +1,9 @@
 # Getting Started
 
+### Skills
+JDK 최소 17 이상
+H2 DataBase 사용 하였습니다.
+
 ### Reference Documentation
 For further reference, please consider the following sections:
 

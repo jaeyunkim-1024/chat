@@ -7,9 +7,10 @@ import com.example.chat.repo.ChatInfoRepository;
 import com.example.chat.repo.ChatUserListRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
 
@@ -57,5 +58,16 @@ public class ChatInfoService {
                 null
         );
         chatUserListRepository.delete(chatUserList);
+    }
+
+    public int getChatViewerWhenLast(Long chatNo,int milliSec){
+        Timestamp currentTime = Timestamp.valueOf(LocalDateTime.now());
+        // 매개변수로 받은 millisec을 분 단위로 변환
+        long minutes = milliSec / (1000 * 60);
+        // 현재 시간에서 해당 분 만큼 이전 시간 구하기
+        LocalDateTime timeBefore = LocalDateTime.now().minusMinutes(minutes);
+        Timestamp timestampLastMilliSec = Timestamp.valueOf(timeBefore);
+
+        return chatUserListRepository.countChatUserListByChatNoAndJoinAtBetween(chatNo,timestampLastMilliSec,currentTime);
     }
 }

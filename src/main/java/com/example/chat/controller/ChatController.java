@@ -3,17 +3,15 @@ package com.example.chat.controller;
 import com.example.chat.dto.ChatDto;
 import com.example.chat.dto.MessageDto;
 import com.example.chat.service.ChatInfoService;
+import com.example.chat.service.MessageService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -22,6 +20,9 @@ import java.util.List;
 public class ChatController {
     @Autowired
     private ChatInfoService chatInfoService;
+
+    @Autowired
+    private MessageService messageService;
 
     @GetMapping("/list")
     public ResponseEntity<List<ChatDto>> chatList(){
@@ -77,10 +78,17 @@ public class ChatController {
     }
 
     @GetMapping("/message/{chatNo}")
-    public ResponseEntity<MessageDto> messageList(@PathVariable Long chatNo){
+    public ResponseEntity<List<MessageDto>> messageList(@PathVariable Long chatNo){
         return ResponseEntity
                 .ok()
-                .body(null);
+                .body(messageService.list(chatNo));
+    }
+
+    @GetMapping("/viewer/{chatNo}")
+    public ResponseEntity<Integer> getViewers(@PathVariable Long chatNo){
+        return ResponseEntity
+                .ok()
+                .body(chatInfoService.getChatViewerWhenLast(chatNo,30 * 60 * 1000));
     }
 
 }

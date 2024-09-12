@@ -2,11 +2,9 @@ package com.example.chat.dto;
 
 import com.example.chat.entity.ChatInfo;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 @Builder
 public class ChatDto {
     private Long chatNo;

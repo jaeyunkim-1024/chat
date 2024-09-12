@@ -40,7 +40,7 @@ public class ChatController {
     }
 
     @PostMapping("/join/{chatNo}")
-    public ResponseEntity<Object> join(HttpServletRequest req, @PathVariable Long chatNo){
+    public ResponseEntity join(HttpServletRequest req, @PathVariable Long chatNo){
         try{
             HttpSession session = req.getSession();
             String custIdxStr = session.getAttribute("custIdx").toString();

@@ -4,15 +4,16 @@ import com.example.chat.dto.LoginRequestDto;
 import com.example.chat.entity.Customer;
 import com.example.chat.repo.CustomerRepository;
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class CustomerService {
-    @Autowired
-    private CustomerRepository customerRepository;
+    private final CustomerRepository customerRepository;
 
     public Boolean login(LoginRequestDto dto, HttpSession session){
         Customer result = customerRepository.findCustomerByLoginIdAndAndCustPwd(dto.getUserId(),dto.getPassword());

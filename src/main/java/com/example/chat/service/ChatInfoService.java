@@ -5,23 +5,21 @@ import com.example.chat.entity.ChatInfo;
 import com.example.chat.entity.ChatUserList;
 import com.example.chat.repo.ChatInfoRepository;
 import com.example.chat.repo.ChatUserListRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class ChatInfoService {
-    @Autowired
-    private ChatInfoRepository chatInfoRepository;
+    private final ChatInfoRepository chatInfoRepository;
 
-    @Autowired
-    private ChatUserListRepository chatUserListRepository;
+    private final ChatUserListRepository chatUserListRepository;
 
     public List<ChatDto> getChatList(){
         List<ChatInfo> list = chatInfoRepository.findChatInfosByChatEnable("Y");

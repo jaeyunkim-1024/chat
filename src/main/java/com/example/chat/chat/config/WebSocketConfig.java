@@ -1,4 +1,4 @@
-package com.example.chat.chat.beans;
+package com.example.chat.chat.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;

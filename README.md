@@ -1,29 +1,43 @@
-# Getting Started
+# 채팅 소켓
 
-### Skills
+# 개발 환경
 JDK 최소 17 이상
 H2 DataBase 사용 하였습니다.
 
-### Reference Documentation
-For further reference, please consider the following sections:
+# Package Tree
 
-* [Official Gradle documentation](https://docs.gradle.org)
-* [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/3.3.3/gradle-plugin)
-* [Create an OCI image](https://docs.spring.io/spring-boot/3.3.3/gradle-plugin/packaging-oci-image.html)
-* [WebSocket](https://docs.spring.io/spring-boot/docs/3.3.3/reference/htmlsingle/index.html#messaging.websockets)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/3.3.3/reference/htmlsingle/index.html#data.sql.jpa-and-spring-data)
-* [Spring Data JDBC](https://docs.spring.io/spring-boot/docs/3.3.3/reference/htmlsingle/index.html#data.sql.jdbc)
-* [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/3.3.3/reference/htmlsingle/index.html#using.devtools)
+## 사용자
+📦user <br/>
+┣ 📂controller <br/>
+┃ ┣ 📜JoinController.java <br/>
+┃ ┗ 📜LoginController.java <br/>
+┣ 📂dto <br/>
+┃ ┣ 📜LoginRequestDto.java <br/>
+┃ ┣ 📜UserDto.java <br/>
+┃ ┗ 📜UserJoinRequestDto.java <br/>
+┣ 📂entity <br/>
+┃ ┣ 📜LoginHistory.java <br/>
+┃ ┗ 📜User.java <br/>
+┣ 📂repository <br/>
+┃ ┣ 📜LoginHistoryRepository.java <br/>
+┃ ┗ 📜UserRepository.java <br/>
+┗ 📂service <br/>
+┃ ┣ 📜JoinService.java <br/>
+┃ ┗ 📜LoginService.java <br/>
 
-### Guides
-The following guides illustrate how to use some features concretely:
-
-* [Using WebSocket to build an interactive web application](https://spring.io/guides/gs/messaging-stomp-websocket/)
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
-* [Using Spring Data JDBC](https://github.com/spring-projects/spring-data-examples/tree/master/jdbc/basics)
-
-### Additional Links
-These additional references should also help you:
-
-* [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
+## 채팅
+📦chat <br/>
+┣ 📂config <br/>
+┃ ┣ 📜StompHandler.java <br/>
+┃ ┗ 📜WebSocketConfig.java <br/>
+┣ 📂controller <br/>
+┃ ┗ 📜MessageController.java <br/>
+┣ 📂dto <br/>
+┃ ┗ 📜MessageDto.java <br/>
+┣ 📂entity <br/>
+┃ ┗ 📜Message.java <br/>
+┣ 📂repo <br/>
+┃ ┗ 📜MessageRepository.java <br/>
+┗ 📂service <br/>
+┃ ┗ 📜MessageService.java <br/>
 
